@@ -1,0 +1,1 @@
+Hugo 0.168.0 linux/amd64 local binary: build passed; 6 HTML pages; 112 local links/fragments checked. Shell snippets pass bash -n; TOML parsed. Docker unavailable: Chainguard image pulls, container build and nginx runtime were not executed.

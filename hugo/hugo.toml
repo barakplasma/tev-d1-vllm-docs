@@ -1,0 +1,33 @@
+baseURL = 'http://localhost:8080/'
+locale = 'en-US'
+title = 'Tev and d1 on vLLM'
+disableKinds = ['taxonomy', 'term', 'RSS', 'sitemap']
+[markup.highlight]
+noClasses = true
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+[[menus.main]]
+name = 'Overview'
+url = '/'
+weight = 1
+[[menus.main]]
+name = 'Tev1-4B'
+url = '/tev/'
+weight = 2
+[[menus.main]]
+name = 'd1-3B'
+url = '/d1/'
+weight = 3
+[[menus.main]]
+name = 'Decision API'
+url = '/decision-api/'
+weight = 4
+[[menus.main]]
+name = 'Operations'
+url = '/operations/'
+weight = 5
+[[menus.main]]
+name = 'Hugo hosting'
+url = '/hugo/'
+weight = 6

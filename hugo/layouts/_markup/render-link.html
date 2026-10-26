@@ -1,0 +1,19 @@
+{{- $url := urls.Parse .Destination -}}
+{{- $href := .Destination -}}
+{{- if and (not $url.IsAbs) (strings.HasSuffix $url.Path ".md") -}}
+  {{- $path := $url.Path -}}
+  {{- $target := false -}}
+  {{- if eq $path "index.md" -}}
+    {{- $target = .Page.Site.Home -}}
+  {{- else -}}
+    {{- $target = .Page.GetPage $path -}}
+  {{- end -}}
+  {{- with $target -}}
+    {{- $href = .RelPermalink -}}
+    {{- with $url.RawQuery -}}{{- $href = printf "%s?%s" $href . -}}{{- end -}}
+    {{- with $url.Fragment -}}{{- $href = printf "%s#%s" $href . -}}{{- end -}}
+  {{- else -}}
+    {{- errorf "Unresolved Markdown link %q in %s" $.Destination $.Page.Path -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>

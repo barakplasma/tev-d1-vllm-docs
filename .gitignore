@@ -1,0 +1,8 @@
+*.zip
+*.tar
+public/
+resources/
+.hugo_build.lock
+.env
+.env.*
+!.env.example

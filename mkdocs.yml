@@ -1,0 +1,9 @@
+site_name: Tev and d1 on vLLM
+docs_dir: docs
+nav:
+  - Overview: index.md
+  - Tev1-4B: tev.md
+  - LiquidAI d1-3B: d1.md
+  - Decision API: decision-api.md
+  - Operations: operations.md
+  - Hugo hosting: hugo.md

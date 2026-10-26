@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+ARG HUGO_IMAGE=cgr.dev/chainguard/hugo:latest
+ARG NGINX_IMAGE=cgr.dev/chainguard/nginx:latest
+FROM ${HUGO_IMAGE} AS build
+WORKDIR /hugo
+COPY --chown=65532:65532 hugo/ /hugo/
+COPY --chown=65532:65532 docs/index.md /hugo/content/_index.md
+COPY --chown=65532:65532 docs/tev.md /hugo/content/tev.md
+COPY --chown=65532:65532 docs/d1.md /hugo/content/d1.md
+COPY --chown=65532:65532 docs/decision-api.md /hugo/content/decision-api.md
+COPY --chown=65532:65532 docs/operations.md /hugo/content/operations.md
+COPY --chown=65532:65532 docs/hugo.md /hugo/content/hugo.md
+ARG SITE_BASE_URL=http://localhost:8080/
+ENV HUGO_BASEURL=${SITE_BASE_URL}
+RUN ["/usr/bin/hugo", "version"]
+RUN ["/usr/bin/hugo", "--minify", "--destination", "/tmp/public", "--cacheDir", "/tmp/hugo-cache", "--noBuildLock"]
+FROM ${NGINX_IMAGE} AS runtime
+COPY --from=build /tmp/public/ /usr/share/nginx/html/
+EXPOSE 8080

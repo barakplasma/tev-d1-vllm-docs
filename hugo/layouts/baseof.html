@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ .Title }} | {{ .Site.Title }}</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,sans-serif;line-height:1.6}body{margin:0}header{padding:1rem;border-bottom:1px solid #888}nav{display:flex;flex-wrap:wrap;gap:1rem}main{max-width:70rem;margin:auto;padding:1.5rem}a{color:light-dark(#174ba0,#9dc5ff)}pre{overflow:auto;padding:1rem;border:1px solid #888;border-radius:.3rem}code{font-size:.9em}table{display:block;overflow:auto;border-collapse:collapse}th,td{border:1px solid #888;padding:.5rem;vertical-align:top}h2,h3{scroll-margin-top:1rem}.toc{padding:.7rem;border:1px solid #888}footer{padding:1rem;border-top:1px solid #888}
+</style></head><body><header><strong>{{ .Site.Title }}</strong><nav aria-label="Main navigation">{{ range .Site.Menus.main }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}</nav></header>
+<main>{{ block "main" . }}{{ end }}</main><footer>Static deployment documentation</footer></body></html>
